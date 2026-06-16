@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.barraLateral{
+    width: 400px;
+    background-color: rgb(19, 19, 19);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.quitar{
+    position: absolute;
+    margin: 10px;
+    height: 40px;
+}
+
+.chatContenedor{
+    width: 100%;
+    background-color: rgb(27, 27, 27);
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 50px;
+}
+
+.formulario{
+    display: flex;
+    width: 100%;
+    padding: 2px;
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.contenedorMensajes{
+    padding: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    overflow-y: auto;
+}

@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+  margin: 0;
+  height: 100vh;
+  background: url("imagena.jpg") no-repeat center center;
+  background-size: cover;   /* Hace que ocupe toda la pantalla */
+  background-attachment: fixed; /* Opcional: efecto parallax */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-card {
+  width: 60%;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.content{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+}
+
+.meses_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flecha{
+    height: 30%;
+    padding: 3px;
+    margin: 0 40px;
+    cursor: pointer;
+    border-radius: 999px;
+}
+
+.flecha:hover{
+    background-color: rgba(240, 255, 255, 0.068);
+}
+
+.derecha{
+    transform: rotate(180deg);
+}
+
+.dias{
+    align-self: end;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.dias p{
+    align-self: center;
+    justify-self: center;
+}
+
+.dia:hover{
+    background-color: rgba(0, 0, 0, 0.199);
+    border-radius: 999px;
+    font-size: 24px;
+    color: lightgreen;
+}
+
+.dia{
+    height: 50px;
+    width: 50px;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.103);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.semana{
+    color: white;
+}
+
+.siguiente{
+    color: rgb(194, 194, 194);
+}
