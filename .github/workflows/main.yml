@@ -1,0 +1,41 @@
+name: Build APK (Buildozer)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APK in Buildozer container
+    runs-on: ubuntu-latest
+    container:
+      image: kivy/buildozer:latest
+      options: --user 1000:1000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show repo contents
+        run: ls -la
+
+      - name: Prepare environment
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+
+      - name: Use Kivy APK entrypoint
+        run: |
+          if [ -f main_apk.py ]; then cp main_apk.py main.py; fi
+
+      - name: Run Buildozer
+        run: |
+          # This may take a long time on first run (downloads toolchains)
+          # Buildozer prompts when run as root; pipe a 'y' to avoid interactive prompt in CI
+          yes | buildozer -v android debug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: bin/*.apk
